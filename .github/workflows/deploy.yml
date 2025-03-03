@@ -1,25 +1,32 @@
-name: Deploy Static Files
+name: Deploy to Linux Server
 
 on:
   push:
     branches:
-      - main 
+      - main  
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
-
-      - name: Deploy Static Files to Server
+      - name: Setup SSH
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" rsync -avz --delete ./static/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
 
-      - name: Restart Web Server (Optional)
+      - name: Connect and Deploy
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "sudo systemctl restart apache2"
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SERVER_USER }}"@"${{ secrets.SERVER_HOST }}" << 'EOF'
+            if [ ! -d '/var/www/myproject/.git' ]; then 
+              git clone git@github.com:https://github.com/ArulrajGopal/english_dict.git /var/www/myproject
+            else 
+              cd /var/www/myproject && git pull origin main
+            fi
+            rsync -av --exclude='.git' /var/www/myproject/ /var/www/html/
+          EOF
