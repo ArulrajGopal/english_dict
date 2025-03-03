@@ -23,7 +23,7 @@ jobs:
 
       - name: Connect and Deploy
         run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.SERVER_USER }}"@"${{ secrets.SERVER_HOST }}" << 'EOF'
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" << 'EOF'
             if [ ! -d '/var/www/myproject/.git' ]; then 
               git clone git@github.com:https://github.com/ArulrajGopal/english_dict.git /var/www/myproject
             else 
