@@ -21,17 +21,6 @@ jobs:
           ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
         shell: bash
 
-      # - name: Connect and Deploy
-      #   run: |
-      #     ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" << 'EOF'
-      #       if [ ! -d '/var/www/myproject/.git' ]; then 
-      #         git clone git@github.com:ArulrajGopal/english_dict.git /var/www/myproject
-      #       else 
-      #         cd /var/www/myproject && git pull origin main
-      #       fi
-      #       rsync -av --exclude='.git' /var/www/myproject/ /var/www/html/
-      #     EOF
-
       - name: Connect and Deploy
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" << 'EOF'
@@ -39,12 +28,12 @@ jobs:
             sudo chown -R "${{ secrets.SSH_USER }}":"${{ secrets.SSH_USER }}" /var/www/myproject
       
             if [ ! -d '/var/www/myproject/.git' ]; then 
-              sudo -u "${{ secrets.SSH_USER }}" git clone git@github.com:ArulrajGopal/english_dict.git /var/www/myproject
+              sudo -u "${{ secrets.SSH_USER }}" git clone git@github.com:https://github.com/ArulrajGopal/english_dict.git /var/www/myproject
             else 
               cd /var/www/myproject && sudo -u "${{ secrets.SSH_USER }}" git pull origin main
             fi
       
-            sudo rsync -av --exclude='.git' /var/www/myproject/ /var/www/html/
+            sudo rsync -av --exclude='.git' /var/www/myproject/static /var/www/html/
           EOF
 
 
