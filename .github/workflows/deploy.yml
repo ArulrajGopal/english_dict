@@ -25,7 +25,7 @@ jobs:
       #   run: |
       #     ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" << 'EOF'
       #       if [ ! -d '/var/www/myproject/.git' ]; then 
-      #         git clone git@github.com:https://github.com/ArulrajGopal/english_dict.git /var/www/myproject
+      #         git clone git@github.com:ArulrajGopal/english_dict.git /var/www/myproject
       #       else 
       #         cd /var/www/myproject && git pull origin main
       #       fi
