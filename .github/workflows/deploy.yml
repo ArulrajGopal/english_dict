@@ -19,6 +19,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+        shell: bash
 
       - name: Connect and Deploy
         run: |
@@ -30,3 +31,12 @@ jobs:
             fi
             rsync -av --exclude='.git' /var/www/myproject/ /var/www/html/
           EOF
+
+
+- name: Setup SSH
+  run: |
+    mkdir -p ~/.ssh
+    echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+    chmod 600 ~/.ssh/id_rsa
+    ssh-keyscan -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts
+  shell: bash
