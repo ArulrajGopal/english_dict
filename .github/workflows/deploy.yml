@@ -21,17 +21,10 @@ jobs:
           ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
         shell: bash
 
-        
       - name: Connect and Deploy
-        run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" << 'EOF'
-            sudo mkdir -p /var/www/myproject
-            sudo chown -R "${{ secrets.SSH_USER }}":"${{ secrets.SSH_USER }}" /var/www/myproject
-
-            git clone git@github.com:ArulrajGopal/english_dict.git /var/www/myproject
-           
-            sudo rsync -av --exclude='.git' /var/www/myproject/static/* /var/www/html/
-          EOF
+        run : |
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" "mkdir -p /var/www/html/"
+          rsync -avz --delete static/ "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}":/var/www/html/
 
 
       # - name: Connect and Deploy
@@ -39,15 +32,14 @@ jobs:
       #     ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}"@"${{ secrets.SSH_HOST }}" << 'EOF'
       #       sudo mkdir -p /var/www/myproject
       #       sudo chown -R "${{ secrets.SSH_USER }}":"${{ secrets.SSH_USER }}" /var/www/myproject
-      
-      #       if [ ! -d '/var/www/myproject/.git' ]; then 
-      #         sudo -u "${{ secrets.SSH_USER }}" git clone git@github.com:ArulrajGopal/english_dict.git /var/www/myproject
-      #       else 
-      #         cd /var/www/myproject && sudo -u "${{ secrets.SSH_USER }}" git pull origin main
-      #       fi
-      
+
+      #       git clone git@github.com:ArulrajGopal/english_dict.git /var/www/myproject
+           
       #       sudo rsync -av --exclude='.git' /var/www/myproject/static/* /var/www/html/
       #     EOF
+
+
+
 
 
 
