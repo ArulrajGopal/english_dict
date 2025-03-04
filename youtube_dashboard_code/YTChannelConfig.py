@@ -1,0 +1,11 @@
+channel_id_dict= {"MoneyPechu" : "UC7fQFl37yAOaPaoxQm-TqSA"
+,"CauveryBusiness" : "UCa1FSXPOxb0x8lZTYCbQJ5g"
+,"Muthaleetukalam":"UCahsYnjbRheSL7uv6jWbJ4w"
+,"TradeAchievers":"UCzk4zJEoZMnjvpoN0HlKjHQ"
+,"CapitalZone":"UCxoM_zP4Cr9LpIEn3TEZhvg"
+,"PRSundar":"UCS2NdYUmv_PUyyKeDAo5zYA"
+,"TheMadrasTrader":"UCqxH7wzv-sMrCnjP3lM3Nmw"
+,"EQSIS":"UCKTWY-rVwUqCxrVmPOlJyjA"
+,"SagaContraTrading":"UChaRiZ3h9JlLCeO2pdWkxMw"
+,"TiruppurBullsShares":"UCqhL6vNCwYLC9_jePXOIvBg"
+}
