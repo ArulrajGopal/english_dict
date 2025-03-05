@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from Credentials import *
+from workflow.Credentials import *
 
 
 uri = f"mongodb+srv://{mongo_user_id}:{mongo_password}@cluster0.olep9qs.mongodb.net/?retryWrites=true&w=majority"
