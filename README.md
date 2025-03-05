@@ -1,6 +1,6 @@
-#Youtube Scrapping to SQL WareHousing
+# Youtube Scrapping to SQL WareHousing
 
-##Project objective
+## Project objective
 Build a youtube dashboard which can give insights about channels, videos & comments.
 
 Below are some sample questions:-
@@ -26,14 +26,14 @@ Below are some sample questions:-
       10.Which videos have the highest number of comments, and what are their corresponding channel names?
 
 
-##Tech and language
+## Tech and language
 1.Azure VM for linux webserver
 2.Mongo db, postgreSQL, 
 3.lang - python, javascript, html, css
 
-##Pre-steps
+## Pre-steps
 
-###Platform-setup
+### Platform-setup
 1.Create a Azure VM with HTTPS/HTTP enabled
 2.Install mongodb
 3.Install postgresSQL
@@ -41,7 +41,7 @@ Below are some sample questions:-
 5.Pip install - pymongo, dnspython, google-api-python-client, pandas, flask_cors, flask
 
 
-###Configuration-setup
+### Configuration-setup
 1.youtube channels config
 2.credentials
     a.mongodb
@@ -50,7 +50,7 @@ Below are some sample questions:-
         google developer console --> create new project --> Enable "youtube data API 3" api --> create API key at credentials
     d.postgresSQL
 
-###Workflow (This will prepare the backend data to be ready)
+### Workflow (This will prepare the backend data to be ready)
 1. Extract data and load it into mongoDB
 2. Extract mongodb data
 3. Clean the data
@@ -59,10 +59,4 @@ Below are some sample questions:-
 
 
 Finally, the youtube dashboard is ready at the website!!! 
-
-
-Youtube object model:-
-
-![Youtube](https://github.com/Arulrajgopal/YT-Scrapping-to-SQL-Warehousing/assets/122370244/b941a8b1-f532-4661-aa68-5bc1642c26e5)
-
 
