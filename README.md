@@ -1,4 +1,4 @@
-# Youtube Scrapping to SQL WareHousing
+# Youtube Dashboard
 
 ## Project objective
 Build a youtube dashboard which can give insights about channels, videos & comments.
