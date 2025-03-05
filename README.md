@@ -28,27 +28,42 @@ Below are some sample questions:-
 
 ## Tech and language
 1.Azure VM for linux webserver
+
 2.Mongo db, postgreSQL, 
+
 3.lang - python, javascript, html, css
+
 
 ## Pre-steps
 
 ### Platform-setup
+
 1.Create a Azure VM with HTTPS/HTTP enabled
+
 2.Install mongodb
+
 3.Install postgresSQL
+
 4.Install python, javascript
+
 5.Pip install - pymongo, dnspython, google-api-python-client, pandas, flask_cors, flask
 
 
 ### Configuration-setup
 1.youtube channels config
+
 2.credentials
+
     a.mongodb
+
     b.webserver ssh_host, ssh_user & ssh_key
+
     c.youtube api key
+
         google developer console --> create new project --> Enable "youtube data API 3" api --> create API key at credentials
+
     d.postgresSQL
+
 
 ### Workflow (This will prepare the backend data to be ready)
 1. Extract data and load it into mongoDB
@@ -58,5 +73,5 @@ Below are some sample questions:-
 5. load it into PostgreSQL
 
 
-Finally, the youtube dashboard is ready at the website!!! 
+Finally, the youtube dashboard is ready at the website!!!
 
