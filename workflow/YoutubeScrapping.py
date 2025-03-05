@@ -1,6 +1,6 @@
 from utility import *
 from YTChannelConfig import *
-from MongoConfiguration import *
+
 
 channel_details_list = get_channel_details(channel_id_dict)
 video_id_lst= get_videos_list('UUKTWY-rVwUqCxrVmPOlJyjA')
