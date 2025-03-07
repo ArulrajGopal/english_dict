@@ -1,8 +1,11 @@
 from pymongo import MongoClient
-from workflow.Credentials import *
+from Credentials import *
+from urllib.parse import quote_plus
 
+encoded_username = quote_plus(mongo_user_id)
+encoded_password = quote_plus(mongo_password)
 
-uri = f"mongodb+srv://{mongo_user_id}:{mongo_password}@cluster0.olep9qs.mongodb.net/?retryWrites=true&w=majority"
+uri = f"mongodb+srv://{encoded_username}:{encoded_password}@cluster0.5ps3l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 # Create a new client and connect to the server
 client = MongoClient(uri)
@@ -14,4 +17,7 @@ try:
 except Exception as e:
     print(e)
      
+
+
+
 
