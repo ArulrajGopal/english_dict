@@ -46,7 +46,6 @@ Below are some sample questions:-
 
 4.Install python, javascript
 
-5.Pip install - pymongo, dnspython, google-api-python-client, pandas, flask_cors, flask, boto3
 
 
 
