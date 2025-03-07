@@ -1,8 +1,20 @@
+import json
+from integrate_utils import *
 from utility import *
 from YTChannelConfig import *
-
+import uuid
 
 channel_details_list = get_channel_details(channel_id_dict)
+
+
+for json in channel_details_list:
+    my_dict = json
+    primary_id = str(uuid.uuid4()) 
+    my_dict['primary_id'] = primary_id
+
+    load_dyanmo_db("channel_details_tbl",my_dict)
+
+
 # video_id_lst= get_videos_list('UUKTWY-rVwUqCxrVmPOlJyjA')
 # videos_details = get_video_details(video_id_lst)
 # popular_comments_lst = get_popular_comments('3lM89xFmwFU')
@@ -19,7 +31,6 @@ channel_details_list = get_channel_details(channel_id_dict)
 # ytscrapping_db.channel_details.drop()
 # print('database cleaned up successfully')
 
-print(channel_details_list)
-
+# print(channel_details_list)
 
 
