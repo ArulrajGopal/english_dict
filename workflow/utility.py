@@ -1,7 +1,6 @@
 from googleapiclient.discovery import build
-from Credentials import *
 
-youtube =  build("youtube","v3",developerKey=api_key)
+youtube =  build("youtube","v3",developerKey=youtube_api_key)
 
 
 
