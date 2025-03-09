@@ -2,7 +2,7 @@ import json
 from integrate_utils import *
 from utility import *
 from YTChannelConfig import *
-import uuid
+
 
 channel_details_lst = get_channel_details(channel_id_dict)
 

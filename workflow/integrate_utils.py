@@ -1,4 +1,3 @@
-from Credentials import *
 import boto3
 
 def load_dyanmo_db(table_name,primary_key,value):
