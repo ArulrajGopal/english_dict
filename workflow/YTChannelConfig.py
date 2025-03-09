@@ -2,7 +2,7 @@ channel_id_dict= {
 "EQSIS":"UCKTWY-rVwUqCxrVmPOlJyjA"
 ,"OPTIONWITHAK":"UCslsTpdkrVnZSwxawhJN6Ag"
 ,"TradeAchievers":"UCzk4zJEoZMnjvpoN0HlKjHQ"
-,"financeboosan":"UCYoh05-njQGGmQ20V-3DvnQ"
+,"financeboosan":"UCmfl6VteCu880D8Txl4vEag"
 ,"CapitalZone":"UCxoM_zP4Cr9LpIEn3TEZhvg"
 ,"TheMadrasTrader":"UCqxH7wzv-sMrCnjP3lM3Nmw"
 ,"SagaContraTrading":"UChaRiZ3h9JlLCeO2pdWkxMw"
