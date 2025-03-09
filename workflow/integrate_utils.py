@@ -1,4 +1,5 @@
 import boto3
+from secrets_config import *
 
 def load_dyanmo_db(table_name,primary_key,value):
     dynamodb = boto3.resource(
