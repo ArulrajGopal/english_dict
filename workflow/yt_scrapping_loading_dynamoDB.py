@@ -4,33 +4,22 @@ from utility import *
 from YTChannelConfig import *
 import uuid
 
-channel_details_list = get_channel_details(channel_id_dict)
+channel_details_lst = get_channel_details(channel_id_dict)
+
+for json in channel_details_lst:
+    load_dyanmo_db("channel_details_tbl","channel_id",json)
+
+for channel in channel_details_lst:
+    channel_id = channel["channel_id"]
+    ply_lst_id = channel["upload_plylst_id"]
+
+    video_id_lst= get_videos_list(ply_lst_id)
+    video_details_lst = get_video_details(video_id_lst)
 
 
-for json in channel_details_list:
-    my_dict = json
-    primary_id = str(uuid.uuid4()) 
-    my_dict['primary_id'] = primary_id
+    for json in video_details_lst:
+        json["channel_id"] = channel_id
+        json["playlist_id"] = ply_lst_id
 
-    load_dyanmo_db("channel_details_tbl",my_dict)
-
-
-# video_id_lst= get_videos_list('UUKTWY-rVwUqCxrVmPOlJyjA')
-# videos_details = get_video_details(video_id_lst)
-# popular_comments_lst = get_popular_comments('3lM89xFmwFU')
-
-
-# ytscrapping_db = client.YoutubeScrapping
-# print('database configuration successful!')
-
-
-# ytscrapping_db.channel_details.insert_many(channel_details_list)
-
-
-# database cleaned up
-# ytscrapping_db.channel_details.drop()
-# print('database cleaned up successfully')
-
-# print(channel_details_list)
-
+        load_dyanmo_db("video_details_tbl","video_id",json)
 

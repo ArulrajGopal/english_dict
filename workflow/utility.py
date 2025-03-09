@@ -7,21 +7,24 @@ youtube =  build("youtube","v3",developerKey=api_key)
 
 def get_channel_details(channel_id_dict):
   all_data = []
-  filtered_data = []
+  channel_details_lst = []
+  upload_plylst_id_lst = []
+
   for i,j in channel_id_dict.items():
     request =youtube.channels().list(part="snippet,contentDetails,statistics", id=j)
     response = request.execute()
     all_data.append(response)
     data = dict(
-              Channel_name = response['items'][0]['snippet']['title'],
-              Subcribers = response['items'][0]['statistics']['subscriberCount'],
+              channel_id = j,
+              channel_name = response['items'][0]['snippet']['title'],
+              subscribers = response['items'][0]['statistics']['subscriberCount'],
               views = response['items'][0]['statistics']['viewCount'],
               videos = response['items'][0]['statistics']['videoCount'],
               upload_plylst_id = response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
               )
-    filtered_data.append(data)
+    channel_details_lst.append(data)
 
-  return filtered_data
+  return channel_details_lst
 
 
 
@@ -56,8 +59,6 @@ def get_videos_list(playlist_id):
 
 
 
-
-
 def get_video_details(video_id_lst):
   #dislikecount not available in the API
   all_video_stats = []
@@ -69,6 +70,7 @@ def get_video_details(video_id_lst):
     for video in response['items']:
       try:
         video_stats = dict(
+                        video_id = video['id'],
                         Title = video['snippet']['title'],
                         Published_date = video['snippet']['publishedAt'],
                         Views = video['statistics']['viewCount'],
@@ -78,6 +80,7 @@ def get_video_details(video_id_lst):
         all_video_stats.append(video_stats)
       except KeyError:
         video_stats = dict(
+                        video_id = video['id'],
                         Title = video['snippet']['title'],
                         Published_date = video['snippet']['publishedAt'],
                         Views = video['statistics']['viewCount'],

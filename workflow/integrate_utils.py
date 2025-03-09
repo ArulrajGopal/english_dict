@@ -1,7 +1,7 @@
 from Credentials import *
 import boto3
 
-def load_dyanmo_db(table_name,value):
+def load_dyanmo_db(table_name,primary_key,value):
     dynamodb = boto3.resource(
         'dynamodb',
         region_name='us-east-1', 
@@ -13,7 +13,9 @@ def load_dyanmo_db(table_name,value):
 
     response = table.put_item(Item=value)
 
-    print(f"Write Successful into {table_name}")
+    record_id = value[primary_key]
+
+    print(f"{record_id} record written into {table_name} successfully!!!")
 
 
 
